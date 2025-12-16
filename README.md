@@ -1,146 +1,87 @@
-# 📝 Team To-Do
+   Todo_List_React   Dana y Ashly
 
-Aplicación colaborativa de tareas construida con **React** y **Vite**. Permite a varios usuarios autenticarse y gestionar tareas en equipo, con almacenamiento local o simulación de backend usando JSON Server y una interfaz moderna usando TailwindCSS.
+##1. README.md (Raíz del Repositorio)#Todo List Fullstack - Ashly & Dana###a.
+Descripción del proyecto
+Una aplicación integral de gestión de tareas (Todo List) que permite a los usuarios administrar sus pendientes de forma eficiente. El sistema incluye autenticación de usuarios, operaciones CRUD (Crear, Leer, Actualizar, Eliminar) y persistencia de datos en una base de datos en la nube.
 
-## 🚀 Características
+###b. Stack Tecnológico* 
+*Frontend:** React.js + Vite, TailwindCSS (Estilos), React Router (Navegación).
+* **Backend:** Node.js + Express.
+* **Despliegue:** Netlify(Front), Railway(Back), backend simulado.
 
-- Autenticación de usuarios (usuarios demo: `User1`/`User1Pass` y `User2`/`User2Pass`)
-- Añadir, buscar y marcar tareas como completadas
-- Filtrado de tareas por autor o texto
-- Persistencia de tareas en `localStorage` o en un backend simulado con JSON Server
-- Interfaz responsive y moderna con TailwindCSS
-- Notificaciones con `react-toastify`
-- Rutas protegidas con React Router
-- Consumo de API REST usando `fetch` y `axios`
+###c. Requisitos Previos* **Node.js** (v18.0.0 o superior)
+* **npm**
+* **Git**
 
-## 📦 Estructura del proyecto
+###d. Ejecución del Frontend (Local)```bash
+cd frontend
+npm install
+npm run dev
 
 ```
-team-to-do/
-├── public/
-│   └── vite.svg
-├── src/
-│   ├── assets/
-│   │   └── react.svg
-│   ├── components/
-│   │   ├── PrivateRoute.jsx
-│   │   ├── SearchInput.jsx
-│   │   ├── TaskForm.jsx
-│   │   ├── TaskItem.jsx
-│   │   └── TaskList.jsx
-│   ├── context/
-│   │   └── authContext.jsx
-│   ├── pages/
-│   │   └── Login.jsx
-│   ├── App.css
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-├── db.json
-├── .eslintrc.json
-├── .gitignore
-├── .prettierrc
-├── eslint.config.js
-├── index.html
-├── package.json
-├── postcss.config.js
-├── README.md
-└── vite.config.js
+
+###e. Ejecución del Backend (Local)```bash
+cd backend
+npm install
+npm run dev
+
 ```
 
-## 🛠️ Desarrollo Local
+###f. Variables de Entorno (.env.example)Crea un archivo `.env` en las carpetas respectivas basándote en lo siguiente:
 
-1. **Clona el repositorio:**
-   ```sh
-   git clone <url-del-repo>
-   cd team-to-do
-   ```
+###g. Links del Proyecto*
+**Frontend:**
+`https://wonderful-sherbet-83f4c7.netlify.app/`
 
-2. **Instala las dependencias del Frontend:**
-   ```sh
-   npm install
-   ```
+**Backend:**
+`https://backend-production-7043.up.railway.app`
+###g. Links del Proyecto*
 
-3. **Instala las dependencias y ejecuta el Backend:**
-   - Navega a la carpeta del backend:
-     ```sh
-     cd backend
-     ```
-   - Instala sus dependencias:
-     ```sh
-     npm install
-     ```
-   - Inicia el servidor API (se ejecutará en `http://localhost:8000`):
-     ```sh
-     npm start
-     ```
+##2. ARQUITECTURA.md###a. Diagrama de Arquitectura###b. Descripción de Componentes* 
+**Frontend (Vercel):** Interfaz de usuario responsiva. Gestiona el estado global de las tareas, el login de usuarios (Ashly/Danna) y las notificaciones con `react-toastify`.
+* **Backend (Render):** API REST que procesa la lógica de negocio, valida los tokens de autenticación y gestiona los endpoints de tareas en un backend simuado.
+*
 
-4. **Ejecuta el Frontend:**
-   - Vuelve a la carpeta raíz del proyecto.
-   - Inicia el servidor de desarrollo de Vite (se ejecutará en `http://localhost:5173`):
-   ```sh
-   npm run dev
-   ```
+###c. Flujo de Operación: "Crear una Tarea"1. **Usuario** escribe el título y hace clic en "Añadir".
+2. **Frontend** valida que el título no esté vacío y envía un `POST /tasks` con el token de usuario.
+3. **Backend** recibe la petición, verifica identidad y guarda en **DB**.
+4. **DB** confirma el guardado.
+5. **Frontend** recibe éxito y actualiza la lista visualmente con un toast de confirmación.
 
-## ☁️ Despliegue
+###d. Pipeline de CI/CDSe utiliza **GitHub Actions** para:
 
-Esta aplicación está preparada para un despliegue separado del frontend y el backend.
+1. **Linter:** Ejecutar `npm run lint` en cada Pull Request.
+2. **Build:** Verificar que el proyecto compile correctamente.
+3. **Deploy Automático:** Al hacer merge a `main`, Vercel y Render actualizan las versiones en vivo.
 
-### Backend en Render
+---
 
-1.  Crea un nuevo **Web Service** en Render y conéctalo a tu repositorio de GitHub.
-2.  En la configuración:
-    -   **Root Directory**: `backend`
-    -   **Build Command**: `npm install`
-    -   **Start Command**: `npm start`
-3.  Despliega el servicio. Render te proporcionará una URL pública para tu API (ej: `https://tu-api.onrender.com`).
-
-### Frontend en Vercel
-
-1.  Crea un nuevo **Project** en Vercel e importa el mismo repositorio de GitHub.
-2.  Vercel detectará que es un proyecto Vite.
-3.  Ve a la configuración del proyecto y añade una **Variable de Entorno**:
-    -   **Name**: `VITE_API_URL`
-    -   **Value**: La URL de tu backend desplegado en Render.
-4.  Despliega. ¡Tu aplicación estará en línea!
-
-## 👤 Usuarios de prueba
-
-- **Usuario 1:**  
-  Usuario: `User1`  
-  Contraseña: `User1Pass`
-
-- **Usuario 2:**  
-  Usuario: `User2`  
-  Contraseña: `User2Pass`
-
-## 🧩 Principales archivos y componentes
-
-- [`src/App.jsx`](src/App.jsx): Componente principal, maneja tareas y autenticación. Consume la API de JSON Server para CRUD de tareas.
-- [`src/context/authContext.jsx`](src/context/authContext.jsx): Contexto de autenticación y lógica de login/logout.
-- [`src/pages/Login.jsx`](src/pages/Login.jsx): Pantalla de inicio de sesión.
-- [`src/components/TaskForm.jsx`](src/components/TaskForm.jsx): Formulario para agregar tareas.
-- [`src/components/TaskList.jsx`](src/components/TaskList.jsx): Lista de tareas.
-- [`src/components/TaskItem.jsx`](src/components/TaskItem.jsx): Ítem individual de tarea.
-- [`src/components/SearchInput.jsx`](src/components/SearchInput.jsx): Barra de búsqueda de tareas.
-- [`src/components/PrivateRoute.jsx`](src/components/PrivateRoute.jsx): Ruta protegida para usuarios autenticados.
-- [`db.json`](db.json): Archivo de base de datos para JSON Server.
-
-## 🧑‍💻 Tecnologías usadas
-
-- [React](https://react.dev/)
-- [Vite](https://vitejs.dev/)
-- [TailwindCSS](https://tailwindcss.com/)
-- [React Router DOM](https://reactrouter.com/)
-- [React Toastify](https://fkhadra.github.io/react-toastify/)
-- [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/)
-- [JSON Server](https://github.com/typicode/json-server)
-- [Axios](https://axios-http.com/)
+##3. API.md (Documentación de API)###Base URL: `https://tu-api.onrender.com/api`| Método | Endpoint | Descripción | Body (JSON) |
+| --- | --- | --- | --- |
+| **POST** | `/auth/login` | Iniciar sesión | `{"username": "", "password": ""}` |
+| **GET** | `/tasks` | Listar tareas del usuario | N/A |
+| **POST** | `/tasks` | Crear nueva tarea | `{"title": "...", "description": "..."}` |
+| **PUT** | `/tasks/:id` | Editar o completar tarea | `{"completed": true}` |
+| **DELETE** | `/tasks/:id` | Eliminar una tarea | N/A |
 
 
 
 
+#Códigos de Estado
+200 OK: Operación exitosa.
 
-Autor: LAURA BURITICA 
+201 Created: Tarea creada con éxito.
 
-¡Contribuciones y sugerencias son bienvenidas!
+400 Bad Request: Falta el título obligatorio.
+
+401 Unauthorized: Usuario no autenticado.
+
+404 Not Found: La tarea no existe.
+
+
+
+Autores: Ashly Rizo y Dana Zarta
+
+
+Muchas gracias por visualizar nuestro proyecto
+
