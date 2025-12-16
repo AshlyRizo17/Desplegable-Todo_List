@@ -1,10 +1,60 @@
-# 📝 Team To-Do
+# Todo List Desplegable
 
-Aplicación colaborativa de tareas construida con **React** y **Vite**. Permite a varios usuarios autenticarse y gestionar tareas en equipo, con almacenamiento local o simulación de backend usando JSON Server y una interfaz moderna usando TailwindCSS.
+## 1. Desplegar Todo List React
 
-## 🚀 Características
+**Actividad Final Integradora: “Todo List Fullstack con Despliegue en la Nube y CI/CD”**
 
-- Autenticación de usuarios (usuarios demo: `User1`/`User1Pass` y `User2`/`User2Pass`)
+---
+
+## 2. Descripción General del Proyecto
+
+Este repositorio contiene una **aplicación Todo List construida con React y Vite** que permite gestionar tareas de forma interactiva. Los usuarios pueden **crear, listar, editar y eliminar tareas**. La aplicación está configurada para uso local con variables de entorno y se puede ampliar para backend y despliegue.
+
+Este proyecto aplica conceptos de desarrollo profesional: estructura de frontend moderno, manejo de estado, consumo de API, validaciones básicas y preparación para despliegue. :contentReference[oaicite:1]{index=1}
+
+---
+
+## 3. Objetivos de Aprendizaje
+
+Al finalizar este proyecto, el aprendiz será capaz de:
+
+- Implementar una aplicación web con **React y Vite**.
+- Manejar CRUD de tareas usando React.
+- Configurar variables de entorno para APIs (por ejemplo `VITE_API_URL`).
+- Preparar la aplicación para consumo de backend real o simulado (por ejemplo JSON Server).
+- Aplicar linters y herramientas de calidad del código (ESLint). :contentReference[oaicite:2]{index=2}
+
+---
+
+## 4. Requerimientos Funcionales
+
+La aplicación debe permitir:
+
+1. **Crear tareas** con:
+   - Título obligatorio
+   - Descripción opcional
+   - Estado (pendiente / completada)
+   - Fecha de creación
+2. **Listar tareas**
+3. **Editar tareas**
+4. **Marcar tareas como completadas o pendientes**
+5. **Eliminar tareas**
+6. **Validar que no se creen tareas sin título**
+
+---
+
+## 5. Requerimientos Técnicos
+
+### 5.1. Frontend (React + Vite)
+
+Esta aplicación fue creada con **React y Vite**. Posee:
+
+- Componentes funcionales y uso de hooks (`useState`, `useEffect`, etc.).
+- Variables de entorno configurables mediante archivo `.env`.
+- Linters configurados (`.eslintrc.json`, `eslint.config.js`) para calidad de código. :contentReference[oaicite:3]{index=3}
+## 6.  🚀 Características
+
+- Autenticación de usuarios (usuarios demo: `Ashly1`/`Ashly2007` y `Danna1`/`Danna2007`)
 - Añadir, buscar y marcar tareas como completadas
 - Filtrado de tareas por autor o texto
 - Persistencia de tareas en `localStorage` o en un backend simulado con JSON Server
@@ -13,134 +63,20 @@ Aplicación colaborativa de tareas construida con **React** y **Vite**. Permite 
 - Rutas protegidas con React Router
 - Consumo de API REST usando `fetch` y `axios`
 
-## 📦 Estructura del proyecto
+---
 
-```
-team-to-do/
-├── public/
-│   └── vite.svg
-├── src/
-│   ├── assets/
-│   │   └── react.svg
-│   ├── components/
-│   │   ├── PrivateRoute.jsx
-│   │   ├── SearchInput.jsx
-│   │   ├── TaskForm.jsx
-│   │   ├── TaskItem.jsx
-│   │   └── TaskList.jsx
-│   ├── context/
-│   │   └── authContext.jsx
-│   ├── pages/
-│   │   └── Login.jsx
-│   ├── App.css
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-├── db.json
-├── .eslintrc.json
-├── .gitignore
-├── .prettierrc
-├── eslint.config.js
-├── index.html
-├── package.json
-├── postcss.config.js
-├── README.md
-└── vite.config.js
-```
+## 7. Licencia
 
-## 🛠️ Desarrollo Local
+Este proyecto utiliza la **Licencia MIT**.
 
-1. **Clona el repositorio:**
-   ```sh
-   git clone <url-del-repo>
-   cd team-to-do
-   ```
+Esto significa que cualquier persona puede usar este proyecto, copiarlo, modificarlo o adaptarlo para otros fines, incluso académicos o personales, sin ningún problema.
 
-2. **Instala las dependencias del Frontend:**
-   ```sh
-   npm install
-   ```
+La única condición es que se mantenga el nombre del autor y la referencia al proyecto original.
 
-3. **Instala las dependencias y ejecuta el Backend:**
-   - Navega a la carpeta del backend:
-     ```sh
-     cd backend
-     ```
-   - Instala sus dependencias:
-     ```sh
-     npm install
-     ```
-   - Inicia el servidor API (se ejecutará en `http://localhost:8000`):
-     ```sh
-     npm start
-     ```
-
-4. **Ejecuta el Frontend:**
-   - Vuelve a la carpeta raíz del proyecto.
-   - Inicia el servidor de desarrollo de Vite (se ejecutará en `http://localhost:5173`):
-   ```sh
-   npm run dev
-   ```
-
-## ☁️ Despliegue
-
-Esta aplicación está preparada para un despliegue separado del frontend y el backend.
-
-### Backend en Render
-
-1.  Crea un nuevo **Web Service** en Render y conéctalo a tu repositorio de GitHub.
-2.  En la configuración:
-    -   **Root Directory**: `backend`
-    -   **Build Command**: `npm install`
-    -   **Start Command**: `npm start`
-3.  Despliega el servicio. Render te proporcionará una URL pública para tu API (ej: `https://tu-api.onrender.com`).
-
-### Frontend en Vercel
-
-1.  Crea un nuevo **Project** en Vercel e importa el mismo repositorio de GitHub.
-2.  Vercel detectará que es un proyecto Vite.
-3.  Ve a la configuración del proyecto y añade una **Variable de Entorno**:
-    -   **Name**: `VITE_API_URL`
-    -   **Value**: La URL de tu backend desplegado en Render.
-4.  Despliega. ¡Tu aplicación estará en línea!
-
-## 👤 Usuarios de prueba
-
-- **Usuario 1:**  
-  Usuario: `User1`  
-  Contraseña: `User1Pass`
-
-- **Usuario 2:**  
-  Usuario: `User2`  
-  Contraseña: `User2Pass`
-
-## 🧩 Principales archivos y componentes
-
-- [`src/App.jsx`](src/App.jsx): Componente principal, maneja tareas y autenticación. Consume la API de JSON Server para CRUD de tareas.
-- [`src/context/authContext.jsx`](src/context/authContext.jsx): Contexto de autenticación y lógica de login/logout.
-- [`src/pages/Login.jsx`](src/pages/Login.jsx): Pantalla de inicio de sesión.
-- [`src/components/TaskForm.jsx`](src/components/TaskForm.jsx): Formulario para agregar tareas.
-- [`src/components/TaskList.jsx`](src/components/TaskList.jsx): Lista de tareas.
-- [`src/components/TaskItem.jsx`](src/components/TaskItem.jsx): Ítem individual de tarea.
-- [`src/components/SearchInput.jsx`](src/components/SearchInput.jsx): Barra de búsqueda de tareas.
-- [`src/components/PrivateRoute.jsx`](src/components/PrivateRoute.jsx): Ruta protegida para usuarios autenticados.
-- [`db.json`](db.json): Archivo de base de datos para JSON Server.
-
-## 🧑‍💻 Tecnologías usadas
-
-- [React](https://react.dev/)
-- [Vite](https://vitejs.dev/)
-- [TailwindCSS](https://tailwindcss.com/)
-- [React Router DOM](https://reactrouter.com/)
-- [React Toastify](https://fkhadra.github.io/react-toastify/)
-- [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/)
-- [JSON Server](https://github.com/typicode/json-server)
-- [Axios](https://axios-http.com/)
+Esta licencia se usa mucho en proyectos académicos y de aprendizaje porque es sencilla y flexible.
 
 
 
+Autor: Ashly Rizo Y Dana Zarta
 
-
-Autor: LAURA BURITICA 
-
-¡Contribuciones y sugerencias son bienvenidas!
+Muchas Gracias por visualizar nuestro proyecto
