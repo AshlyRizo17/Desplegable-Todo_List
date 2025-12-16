@@ -117,57 +117,66 @@ export default function App() {
 
  return (
   <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-300 p-6 text-slate-800">
-    <div className="flex justify-between items-center mb-8 bg-white px-8 py-6 rounded-2xl shadow-md">
-      <h1 className="text-3xl font-bold text-sky-600">
-        Todo_List
-      </h1>
+    
+    {/* Contenedor principal angosto */}
+    <div className="max-w-3xl mx-auto">
 
-      <div className="flex items-center gap-4">
-        <span className="font-medium text-slate-600">
-          Hola, <strong>{user.username}</strong>
-        </span>
-        <button
-          onClick={logout}
-          className="bg-sky-500 text-white font-semibold px-5 py-2 rounded-lg hover:bg-sky-400 transition"
-        >
-          Cerrar sesión
-        </button>
-      </div>
-    </div>
+      {/* Header */}
+      <div className="flex justify-between items-center mb-8 bg-white px-8 py-6 rounded-2xl shadow-md">
+        <h1 className="text-3xl font-bold text-sky-600">
+          Todo_List
+        </h1>
 
-    {/* Error */}
-    {error && (
-      <div className="mb-6 bg-rose-100 border border-rose-300 text-rose-700 p-4 rounded-xl">
-        <strong>Error:</strong> {error}
-      </div>
-    )}
-
-    <div className="mb-6 bg-white p-5 rounded-2xl shadow-sm">
-      <SearchInput search={search} setSearch={handleSearchChange} />
-    </div>
-
-    {loadingSearch ? (
-      <div className="flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-md">
-        <div className="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin mb-3"></div>
-        <span className="text-sky-600 font-semibold">
-          Buscando...
-        </span>
-      </div>
-    ) : (
-      <>
-        <div className="mb-6 bg-white p-6 rounded-2xl shadow-sm">
-          <TaskForm addTask={addTask} />
+        <div className="flex items-center gap-4">
+          <span className="font-medium text-slate-600">
+            Hola, <strong>{user.username}</strong>
+          </span>
+          <button
+            onClick={logout}
+            className="bg-sky-500 text-white font-semibold px-5 py-2 rounded-lg hover:bg-sky-400 transition"
+          >
+            Cerrar sesión
+          </button>
         </div>
+      </div>
 
-        <div className="bg-white p-6 rounded-2xl shadow-sm">
-          <TaskList
-            tasks={filteredTasks}
-            toggleTask={toggleTask}
-            deleteTask={deleteTask}
-          />
+      {/* Error */}
+      {error && (
+        <div className="mb-6 bg-rose-100 border border-rose-300 text-rose-700 p-4 rounded-xl">
+          <strong>Error:</strong> {error}
         </div>
-      </>
-    )}
+      )}
+
+      {/* Search */}
+      <div className="mb-6 bg-white p-5 rounded-2xl shadow-sm">
+        <SearchInput search={search} setSearch={handleSearchChange} />
+      </div>
+
+      {loadingSearch ? (
+        <div className="flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-md">
+          <div className="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin mb-3"></div>
+          <span className="text-sky-600 font-semibold">
+            Buscando...
+          </span>
+        </div>
+      ) : (
+        <>
+          {/* Form */}
+          <div className="mb-6 bg-white p-6 rounded-2xl shadow-sm">
+            <TaskForm addTask={addTask} />
+          </div>
+
+          {/* List */}
+          <div className="bg-white p-6 rounded-2xl shadow-sm">
+            <TaskList
+              tasks={filteredTasks}
+              toggleTask={toggleTask}
+              deleteTask={deleteTask}
+            />
+          </div>
+        </>
+      )}
+    </div>
   </div>
 )
 }
