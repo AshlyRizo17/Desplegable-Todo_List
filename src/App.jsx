@@ -115,49 +115,59 @@ export default function App() {
     );
   }, [tasks, search]);
 
-  return (
-    <div className="min-h-screen bg-black p-6 text-gray-100">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-extrabold text-yellow-400 drop-shadow">
-          Todo_List
-        </h1>
-        <div>
-          <span className="mr-4 font-semibold text-yellow-300">
-            Hola, {user.username}
-          </span>
-          <button
-            onClick={logout}
-            className="bg-yellow-500 text-black font-bold rounded-lg p-3 mt-4 hover:bg-yellow-400 transition-colors"
-          >
-            Cerrar sesión
-          </button>
-        </div>
+ return (
+  <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-300 p-6 text-slate-800">
+    <div className="flex justify-between items-center mb-8 bg-white px-8 py-6 rounded-2xl shadow-md">
+      <h1 className="text-3xl font-bold text-sky-600">
+        Todo_List
+      </h1>
+
+      <div className="flex items-center gap-4">
+        <span className="font-medium text-slate-600">
+          Hola, <strong>{user.username}</strong>
+        </span>
+        <button
+          onClick={logout}
+          className="bg-sky-500 text-white font-semibold px-5 py-2 rounded-lg hover:bg-sky-400 transition"
+        >
+          Cerrar sesión
+        </button>
       </div>
+    </div>
 
-      {/* Mostrar el mensaje de error si existe */}
-      {error && (
-        <div className="bg-red-500/20 border border-red-500 text-red-300 p-4 rounded-lg mb-4">
-          <strong>Error:</strong> {error}
-        </div>
-      )}
+    {/* Error */}
+    {error && (
+      <div className="mb-6 bg-rose-100 border border-rose-300 text-rose-700 p-4 rounded-xl">
+        <strong>Error:</strong> {error}
+      </div>
+    )}
 
+    <div className="mb-6 bg-white p-5 rounded-2xl shadow-sm">
       <SearchInput search={search} setSearch={handleSearchChange} />
+    </div>
 
-      {loadingSearch ? (
-        <div className="flex flex-col items-center justify-center p-6 mt-6 bg-neutral-900 border border-yellow-600 rounded-2xl shadow-xl">
-          <div className="w-10 h-10 border-4 border-yellow-500 border-t-transparent rounded-full animate-spin mb-2"></div>
-          <span className="text-yellow-400 font-bold">Buscando...</span>
-        </div>
-      ) : (
-        <>
+    {loadingSearch ? (
+      <div className="flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-md">
+        <div className="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin mb-3"></div>
+        <span className="text-sky-600 font-semibold">
+          Buscando...
+        </span>
+      </div>
+    ) : (
+      <>
+        <div className="mb-6 bg-white p-6 rounded-2xl shadow-sm">
           <TaskForm addTask={addTask} />
+        </div>
+
+        <div className="bg-white p-6 rounded-2xl shadow-sm">
           <TaskList
             tasks={filteredTasks}
             toggleTask={toggleTask}
             deleteTask={deleteTask}
           />
-        </>
-      )}
-    </div>
-  )
+        </div>
+      </>
+    )}
+  </div>
+)
 }
