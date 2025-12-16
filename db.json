@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": "1859201111001",
+      "author": "Ashly",
+      "text": "Avanzar documentación del proyecto",
+      "completed": false
+    },
+    {
+      "id": "1859201111002",
+      "author": "Danna",
+      "text": "Organizar habitación",
+      "completed": true
+    },
+    {
+      "id": "1859201111003",
+      "author": "Ashly",
+      "text": "Entregar trabajo de React",
+      "completed": false
+    },
+    {
+      "id": "1859201111004",
+      "author": "Danna",
+      "text": "Comprar materiales de estudio",
+      "completed": true
+    }
+  ]
+}
