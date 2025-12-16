@@ -47,11 +47,7 @@ team-to-do/
 └── README.md            # Documentación del proyecto
 
 
-### Backend (.env)
 
-```env
-PORT=3000
-JWT_SECRET=your_jwt_secret
 ```
 
 ---
@@ -91,10 +87,10 @@ VITE_API_URL=https://backend-production-7043.up.railway.app
 [ Usuario ]
      │
      ▼
-[ Frontend (React / Vercel) ]
+[ Frontend (React / Netlify) ]
      │  HTTP + JWT
      ▼
-[ Backend (Node.js / Render) ]
+[ Backend (Node.js / Railway) ]
      │
      ▼
 [ Base de Datos Simulada ]
