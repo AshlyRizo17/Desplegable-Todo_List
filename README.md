@@ -46,66 +46,135 @@ team-to-do/
 ├── package.json         # Dependencias y scripts del proyecto
 └── README.md            # Documentación del proyecto
 
-f. Variables de Entorno (.env.example)
 
-Crea un archivo .env en las carpetas respectivas basándote en lo siguiente:
+## f. Variables de Entorno (.env.example)
 
-g. Links del Proyecto
+Crea un archivo **.env** en las carpetas correspondientes (**frontend** y **backend**) basándote en el siguiente ejemplo:
 
-Frontend:
-https://wonderful-sherbet-83f4c7.netlify.app/
+### Frontend (.env)
 
-Backend:
-https://backend-production-7043.up.railway.app
+```env
+VITE_API_URL=https://backend-production-7043.up.railway.app
+```
 
-2. ARQUITECTURA.md
-a. Diagrama de Arquitectura
-b. Descripción de Componentes
+### Backend (.env)
 
-Frontend (Vercel): Interfaz de usuario responsiva. Gestiona el estado global de las tareas, el login de usuarios (Ashly/Danna) y las notificaciones con react-toastify.
+```env
+PORT=3000
+JWT_SECRET=your_jwt_secret
+```
 
-Backend (Render): API REST que procesa la lógica de negocio, valida los tokens de autenticación y gestiona los endpoints de tareas en un backend simuado.
+---
 
-c. Flujo de Operación: "Crear una Tarea"
+## g. Links del Proyecto
 
-Usuario escribe el título y hace clic en "Añadir".
+### 🌐 Frontend
 
-Frontend valida que el título no esté vacío y envía un POST /tasks con el token de usuario.
+👉 [https://wonderful-sherbet-83f4c7.netlify.app/](https://wonderful-sherbet-83f4c7.netlify.app/)
 
-Backend recibe la petición, verifica identidad y guarda en DB.
+### 🔗 Backend
 
-DB confirma el guardado.
+👉 [https://backend-production-7043.up.railway.app](https://backend-production-7043.up.railway.app)
 
-Frontend recibe éxito y actualiza la lista visualmente con un toast de confirmación.
+---
 
-d. Pipeline de CI/CD
+# 🏗️ ARQUITECTURA
 
-Se utiliza GitHub Actions para:
+## a. Diagrama de Arquitectura
 
-Linter: Ejecutar npm run lint en cada Pull Request.
+```
+[ Usuario ]
+     │
+     ▼
+[ Frontend (React / Vercel) ]
+     │  HTTP + JWT
+     ▼
+[ Backend (Node.js / Render) ]
+     │
+     ▼
+[ Base de Datos Simulada ]
+```
 
-Build: Verificar que el proyecto compile correctamente.
+---
 
-Deploy Automático: Al hacer merge a main, Vercel y Render actualizan las versiones en vivo.
+## b. Descripción de Componentes
 
-3. API.md (Documentación de API)
-Base URL
+### Frontend (Vercel)
 
+* Interfaz de usuario responsiva
+* Gestión del estado global de tareas
+* Autenticación de usuarios (Ashly / Danna)
+* Notificaciones con **react-toastify**
+
+### Backend (Render)
+
+* API REST
+* Lógica de negocio
+* Validación de tokens JWT
+* Endpoints para gestión de tareas
+* Backend simulado (sin DB real)
+
+---
+
+## c. Flujo de Operación: "Crear una Tarea"
+
+1. El usuario escribe el título y hace clic en **"Añadir"**
+2. El frontend valida que el título no esté vacío
+3. Se envía un **POST /tasks** con el token del usuario
+4. El backend valida la identidad
+5. La tarea se guarda en la base de datos simulada
+6. El backend responde con éxito
+7. El frontend actualiza la lista y muestra un toast de confirmación
+
+---
+
+## d. Pipeline de CI/CD
+
+Se utiliza **GitHub Actions** para automatizar:
+
+* 🔍 **Linter**: `npm run lint` en cada Pull Request
+* 🏗️ **Build**: Verificación de compilación del proyecto
+* 🚀 **Deploy Automático**:
+
+  * Merge a `main`
+  * Despliegue automático en **Vercel** (frontend)
+  * Despliegue automático en **Render** (backend)
+
+---
+
+# 📡 API Documentation
+
+## Base URL
+
+```
 https://tu-api.onrender.com/api
+```
 
-Método	Endpoint	Descripción	Body (JSON)
-POST	/auth/login	Iniciar sesión	{"username": "", "password": ""}
-GET	/tasks	Listar tareas del usuario	N/A
-POST	/tasks	Crear nueva tarea	{"title": "...", "description": "..."}
-PUT	/tasks/:id	Editar o completar tarea	{"completed": true}
-DELETE	/tasks/:id	Eliminar una tarea	N/A
-Códigos de Estado
+---
 
-200 OK: Operación exitosa.
-201 Created: Tarea creada con éxito.
-400 Bad Request: Falta el título obligatorio.
-401 Unauthorized: Usuario no autenticado.
-404 Not Found: La tarea no existe.
+## Endpoints
+
+| Método | Endpoint    | Descripción               | Body (JSON)                                |
+| ------ | ----------- | ------------------------- | ------------------------------------------ |
+| POST   | /auth/login | Iniciar sesión            | `{ "username": "", "password": "" }`       |
+| GET    | /tasks      | Listar tareas del usuario | N/A                                        |
+| POST   | /tasks      | Crear nueva tarea         | `{ "title": "...", "description": "..." }` |
+| PUT    | /tasks/:id  | Editar o completar tarea  | `{ "completed": true }`                    |
+| DELETE | /tasks/:id  | Eliminar una tarea        | N/A                                        |
+
+---
+
+## Códigos de Estado
+
+* **200 OK** → Operación exitosa
+* **201 Created** → Tarea creada con éxito
+* **400 Bad Request** → Falta el título obligatorio
+* **401 Unauthorized** → Usuario no autenticado
+* **404 Not Found** → La tarea no existe
+
+---
+
+📌 *Proyecto académico – Sistema Todo List con arquitectura moderna y despliegue continuo*
 
 
 
