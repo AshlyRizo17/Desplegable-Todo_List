@@ -47,16 +47,6 @@ team-to-do/
 └── README.md            # Documentación del proyecto
 
 
-## f. Variables de Entorno (.env.example)
-
-Crea un archivo **.env** en las carpetas correspondientes (**frontend** y **backend**) basándote en el siguiente ejemplo:
-
-### Frontend (.env)
-
-```env
-VITE_API_URL=https://backend-production-7043.up.railway.app
-```
-
 ### Backend (.env)
 
 ```env
@@ -77,7 +67,22 @@ JWT_SECRET=your_jwt_secret
 👉 [https://backend-production-7043.up.railway.app](https://backend-production-7043.up.railway.app)
 
 ---
+### Backend (.env)
 
+```env
+PORT=3000
+JWT_SECRET=your_jwt_secret
+```
+
+## f. Variables de Entorno (.env.example)
+
+Crea un archivo **.env** en las carpetas correspondientes (**frontend** y **backend**) basándote en el siguiente ejemplo:
+
+### Frontend (.env)
+
+```env
+VITE_API_URL=https://backend-production-7043.up.railway.app
+```
 # 🏗️ ARQUITECTURA
 
 ## a. Diagrama de Arquitectura
