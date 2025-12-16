@@ -26,11 +26,11 @@ export default function App() {
         const response = await apiClient.get('/tasks', { signal: controller.signal })
         // Ordenamos las tareas por fecha de creación para que las más nuevas aparezcan primero
         setTasks(response.data.sort((a, b) => b.id - a.id))
-      } catch (error) {
-        if (axios.isCancel(error)) return;
-        console.error("Error al cargar las tareas:", error)
-        setError("No se pudieron cargar las tareas. Revisa la conexión con el backend.");
-      }
+      }catch (error) {
+  if (axios.isCancel(error)) return
+  console.error("Error al cargar las tareas:", error)
+}
+
     }
     fetchTasks()
 
