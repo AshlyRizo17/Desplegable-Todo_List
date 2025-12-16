@@ -64,6 +64,9 @@ npm run dev
 | **PUT** | `/tasks/:id` | Editar o completar tarea | `{"completed": true}` |
 | **DELETE** | `/tasks/:id` | Eliminar una tarea | N/A |
 
+
+
+
 #Códigos de Estado
 200 OK: Operación exitosa.
 
