@@ -1,82 +1,84 @@
-# Todo List Desplegable
+   Todo_List_React   Dana y Ashly
 
-## 1. Desplegar Todo List React
+##1. README.md (Raíz del Repositorio)#Todo List Fullstack - Ashly & Dana###a.
+Descripción del proyecto
+Una aplicación integral de gestión de tareas (Todo List) que permite a los usuarios administrar sus pendientes de forma eficiente. El sistema incluye autenticación de usuarios, operaciones CRUD (Crear, Leer, Actualizar, Eliminar) y persistencia de datos en una base de datos en la nube.
 
-**Actividad Final Integradora: “Todo List Fullstack con Despliegue en la Nube y CI/CD”**
+###b. Stack Tecnológico* 
+*Frontend:** React.js + Vite, TailwindCSS (Estilos), React Router (Navegación).
+* **Backend:** Node.js + Express.
+* **Despliegue:** Netlify(Front), Railway(Back), backend simulado.
 
----
+###c. Requisitos Previos* **Node.js** (v18.0.0 o superior)
+* **npm**
+* **Git**
 
-## 2. Descripción General del Proyecto
+###d. Ejecución del Frontend (Local)```bash
+cd frontend
+npm install
+npm run dev
 
-Este repositorio contiene una **aplicación Todo List construida con React y Vite** que permite gestionar tareas de forma interactiva. Los usuarios pueden **crear, listar, editar y eliminar tareas**. La aplicación está configurada para uso local con variables de entorno y se puede ampliar para backend y despliegue.
+```
 
-Este proyecto aplica conceptos de desarrollo profesional: estructura de frontend moderno, manejo de estado, consumo de API, validaciones básicas y preparación para despliegue. :contentReference[oaicite:1]{index=1}
+###e. Ejecución del Backend (Local)```bash
+cd backend
+npm install
+npm run dev
 
----
+```
 
-## 3. Objetivos de Aprendizaje
+###f. Variables de Entorno (.env.example)Crea un archivo `.env` en las carpetas respectivas basándote en lo siguiente:
 
-Al finalizar este proyecto, el aprendiz será capaz de:
+###g. Links del Proyecto*
+**Frontend:**
+`https://wonderful-sherbet-83f4c7.netlify.app/`
 
-- Implementar una aplicación web con **React y Vite**.
-- Manejar CRUD de tareas usando React.
-- Configurar variables de entorno para APIs (por ejemplo `VITE_API_URL`).
-- Preparar la aplicación para consumo de backend real o simulado (por ejemplo JSON Server).
-- Aplicar linters y herramientas de calidad del código (ESLint). :contentReference[oaicite:2]{index=2}
+**Backend:**
+`https://backend-production-7043.up.railway.app`
+###g. Links del Proyecto*
 
----
+##2. ARQUITECTURA.md###a. Diagrama de Arquitectura###b. Descripción de Componentes* 
+**Frontend (Vercel):** Interfaz de usuario responsiva. Gestiona el estado global de las tareas, el login de usuarios (Ashly/Danna) y las notificaciones con `react-toastify`.
+* **Backend (Render):** API REST que procesa la lógica de negocio, valida los tokens de autenticación y gestiona los endpoints de tareas en un backend simuado.
+*
 
-## 4. Requerimientos Funcionales
+###c. Flujo de Operación: "Crear una Tarea"1. **Usuario** escribe el título y hace clic en "Añadir".
+2. **Frontend** valida que el título no esté vacío y envía un `POST /tasks` con el token de usuario.
+3. **Backend** recibe la petición, verifica identidad y guarda en **DB**.
+4. **DB** confirma el guardado.
+5. **Frontend** recibe éxito y actualiza la lista visualmente con un toast de confirmación.
 
-La aplicación debe permitir:
+###d. Pipeline de CI/CDSe utiliza **GitHub Actions** para:
 
-1. **Crear tareas** con:
-   - Título obligatorio
-   - Descripción opcional
-   - Estado (pendiente / completada)
-   - Fecha de creación
-2. **Listar tareas**
-3. **Editar tareas**
-4. **Marcar tareas como completadas o pendientes**
-5. **Eliminar tareas**
-6. **Validar que no se creen tareas sin título**
-
----
-
-## 5. Requerimientos Técnicos
-
-### 5.1. Frontend (React + Vite)
-
-Esta aplicación fue creada con **React y Vite**. Posee:
-
-- Componentes funcionales y uso de hooks (`useState`, `useEffect`, etc.).
-- Variables de entorno configurables mediante archivo `.env`.
-- Linters configurados (`.eslintrc.json`, `eslint.config.js`) para calidad de código. :contentReference[oaicite:3]{index=3}
-## 6.  🚀 Características
-
-- Autenticación de usuarios (usuarios demo: `Ashly1`/`Ashly2007` y `Danna1`/`Danna2007`)
-- Añadir, buscar y marcar tareas como completadas
-- Filtrado de tareas por autor o texto
-- Persistencia de tareas en `localStorage` o en un backend simulado con JSON Server
-- Interfaz responsive y moderna con TailwindCSS
-- Notificaciones con `react-toastify`
-- Rutas protegidas con React Router
-- Consumo de API REST usando `fetch` y `axios`
+1. **Linter:** Ejecutar `npm run lint` en cada Pull Request.
+2. **Build:** Verificar que el proyecto compile correctamente.
+3. **Deploy Automático:** Al hacer merge a `main`, Vercel y Render actualizan las versiones en vivo.
 
 ---
 
-## 7. Licencia
+##3. API.md (Documentación de API)###Base URL: `https://tu-api.onrender.com/api`| Método | Endpoint | Descripción | Body (JSON) |
+| --- | --- | --- | --- |
+| **POST** | `/auth/login` | Iniciar sesión | `{"username": "", "password": ""}` |
+| **GET** | `/tasks` | Listar tareas del usuario | N/A |
+| **POST** | `/tasks` | Crear nueva tarea | `{"title": "...", "description": "..."}` |
+| **PUT** | `/tasks/:id` | Editar o completar tarea | `{"completed": true}` |
+| **DELETE** | `/tasks/:id` | Eliminar una tarea | N/A |
 
-Este proyecto utiliza la **Licencia MIT**.
+#Códigos de Estado
+200 OK: Operación exitosa.
 
-Esto significa que cualquier persona puede usar este proyecto, copiarlo, modificarlo o adaptarlo para otros fines, incluso académicos o personales, sin ningún problema.
+201 Created: Tarea creada con éxito.
 
-La única condición es que se mantenga el nombre del autor y la referencia al proyecto original.
+400 Bad Request: Falta el título obligatorio.
 
-Esta licencia se usa mucho en proyectos académicos y de aprendizaje porque es sencilla y flexible.
+401 Unauthorized: Usuario no autenticado.
+
+404 Not Found: La tarea no existe.
 
 
 
-Autor: Ashly Rizo Y Dana Zarta
+Autores: Ashly Rizo y Dana Zarta
 
-Muchas Gracias por visualizar nuestro proyecto
+
+Muchas gracias por visualizar nuestro proyecto
+
